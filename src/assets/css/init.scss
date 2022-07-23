@@ -1,3 +1,5 @@
+$default_font_size: 12px;
+
 body,
 div,
 dl,
@@ -29,7 +31,7 @@ td {
 }
 body {
   background: #fff;
-  font-size: 12px;
+  font-size: $default_font_size;
   font-family: '宋体', 'Arial Narrow', Verdana, Helvetica, sans-serif;
   -webkit-text-size-adjust: 100%;
 }
@@ -37,7 +39,7 @@ body {
 td,
 th,
 caption {
-  font-size: 12px;
+  font-size: $default_font_size;
 }
 h1,
 h2,
@@ -75,7 +77,8 @@ input,
 textarea,
 select,
 button {
-  font: 12px '宋体', 'Arial Narrow', Verdana, Helvetica, sans-serif;
+  font: $default_font_size '宋体', 'Arial Narrow', Verdana, Helvetica,
+    sans-serif;
 }
 table {
   border-collapse: collapse;
