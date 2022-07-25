@@ -1,7 +1,5 @@
-<template>
-  <div class="todo-list">
-    todo-list
-  </div>
+<template lang="pug">
+.todo-list todo-list
 </template>
 
 <script setup>

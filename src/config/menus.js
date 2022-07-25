@@ -1,7 +1,7 @@
 export const menuColumns = [
   {
     path: '/todo-list',
-    name: 'TodoList'
+    name: 'Todo List',
   }
   // {
   //   path: '/todo-list1',
@@ -10,6 +10,10 @@ export const menuColumns = [
   //     {
   //       path: '/todo-list1-1',
   //       name: '待办事项1-1',
+  //     },
+  //     {
+  //       path: '/todo-list1-2',
+  //       name: '待办事项1-2',
   //     }
   //   ]
   // }

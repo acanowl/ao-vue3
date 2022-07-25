@@ -1,20 +1,23 @@
-<template>
-  <el-container>
-    <el-aside>
-      <vertical-menus :columns="menuColumns" @open="openHandle"></vertical-menus>
-    </el-aside>
-    <el-main>
-      <router-view></router-view>
-    </el-main>
-  </el-container>
+<template lang="pug">
+el-container
+  el-aside
+    base-menus(:columns="menuColumns" @open="openHandle" @close="closeHandle" @click="clickHandle")
+  el-main
+    router-view
 </template>
 
 <script setup>
-import VerticalMenus from '@/components/vertical-menus'
+import BaseMenus from '@/components/base-menus'
 import { menuColumns } from '@/config/menus'
 
 const openHandle = v => {
   console.log(v, 'openHandle')
+}
+const closeHandle = v => {
+  console.log(v, 'closeHandle')
+}
+const clickHandle = v => {
+  console.log(v, 'clickHandle')
 }
 </script>
 
