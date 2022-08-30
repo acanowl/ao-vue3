@@ -1,0 +1,12 @@
+.flex {
+  display: flex;
+}
+
+.flex-ver {
+  @extend .flex;
+  flex-direction: column;
+}
+
+.flex-1 {
+  flex: 1;
+}
