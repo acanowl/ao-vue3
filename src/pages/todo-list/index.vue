@@ -1,47 +1,31 @@
 <template lang="pug">
-.todo-list
-  .flex
-    el-input(v-model="inputValue" clearable)
-    el-button(@click='addTodoItem') 新增
-  el-tabs(v-model="filterValue" @tab-click="changeTabs")
-    el-tab-pane(:label="item" :name="item" v-for="item in ['all', 'finished', 'unfinished']" :key="item")
-      .flex-ver(v-for="(item, index) in todoStore.filterTodos" :key="item.id")
-        .flex(:class="{ 'txt-minor': item.isFinished }")
-          .flex-1 {{ index + 1 }}、{{ item.text }}
-          div(@click="finishHandle(item)") {{ cptIcon(item) }}
-  
+.txt-h1 Todo List
+todo-input.pd-t-8(v-model="inputValue" @[EVENT_ADD_NAME]="addHandle")
+todo-group.pd-t-8(v-for="([key, title]) in todoGroupOpts" :key="key" :title="title" :items="todoGroupList[key]" @refresh="refreshHandle" @clear="clearHandle")
 </template>
 
 <script setup>
 import { ref, computed } from 'vue'
 import { useTodoStore } from "@/stores"
+import TodoInput from './components/todo-input'
+import TodoGroup from './components/todo-group'
+const EVENT_ADD_NAME = 'onAdd'
+const TYPE_UN_FINISH = 'unfinished'
+const TYPE_FINISH = 'finished'
+
 const todoStore = useTodoStore()
 
 const inputValue = ref('')
-const addTodoItem = () => {
-  todoStore.addTodos(inputValue.value)
-  inputValue.value = ''
-}
+const todoGroupList = computed(() => ({ [TYPE_UN_FINISH]: todoStore.unfinishedTodos, [TYPE_FINISH]: todoStore.finishedTodos }))
+const todoGroupOpts = [[TYPE_UN_FINISH, '未完成'], [TYPE_FINISH, '已完成']]
 
-const filterValue = ref('all')
-const changeTabs = () => {
-  todoStore.$patch({ filter: filterValue })
+const refreshHandle = item => {
+  const todos = todoStore.todos
+  const index = todos.findIndex(items => item.id === items.id)
+  todos.splice(index, 1, item)
 }
-
-const finishHandle = (item) => {
-  const { id, isFinished } = item
-  if (isFinished) {
-    const sliceTodos = todoStore.todos
-    console.log(sliceTodos, 'sliceTodos')
-    sliceTodos.splice(sliceTodos.findIndex(item => item.id === id), 1)
-    console.log(sliceTodos, 'sliceTodos')
-    todoStore.$patch({ todos: sliceTodos })
-  } else {
-    todoStore.$patch({ todos: todoStore.todos.map(item => item.id === id ? { ...item, isFinished: true } : item) })
-  }
-}
-
-const cptIcon = computed(() => item => item.isFinished ? 'X' : '√')
+const addHandle = (value) => todoStore.addTodos(value)
+const clearHandle = (value) => todoStore.delTodos(value)
 </script>
 
 <script>
@@ -49,7 +33,3 @@ export default {
   name: 'todo-list'
 }
 </script>
-
-<style lang="scss">
-.todo-list {}
-</style>

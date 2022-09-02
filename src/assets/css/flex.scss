@@ -10,3 +10,16 @@
 .flex-1 {
   flex: 1;
 }
+
+.items-center {
+  align-items: center;
+}
+
+.jusitfy-center {
+  justify-content: center;
+}
+
+.flex-center {
+  @extend .jusitfy-center;
+  @extend .items-center;
+}

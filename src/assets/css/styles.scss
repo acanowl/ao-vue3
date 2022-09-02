@@ -9,10 +9,83 @@
   @extend .full-h;
 }
 
+.txt-default {
+  color: #333;
+}
 .txt-info {
   color: #666;
 }
-
 .txt-minor {
   color: #999;
+}
+
+.txt-h1 {
+  font-size: 22px;
+}
+.txt-h2 {
+  font-size: 20px;
+}
+.txt-h3 {
+  font-size: 18px;
+}
+.txt-h4 {
+  font-size: 16px;
+}
+.txt-h5 {
+  font-size: 14px;
+}
+.txt-h6 {
+  font-size: 12px;
+}
+
+.txt-bold {
+  font-weight: bold;
+}
+
+$pds: 4, 8, 16, 24, 32;
+@each $pd in $pds {
+  .pd-t-#{$pd} {
+    padding-top: #{$pd}px;
+  }
+  .pd-b-#{$pd} {
+    padding-bottom: #{$pd}px;
+  }
+  .pd-l-#{$pd} {
+    padding-left: #{$pd}px;
+  }
+  .pd-r-#{$pd} {
+    padding-right: #{$pd}px;
+  }
+  .pd-v-#{$pd} {
+    @extend .pd-t-#{$pd};
+    @extend .pd-b-#{$pd};
+  }
+  .pd-h-#{$pd} {
+    @extend .pd-l-#{$pd};
+    @extend .pd-r-#{$pd};
+  }
+}
+
+$mrs: 8;
+@each $mr in $mrs {
+  .mr-t-#{$mr} {
+    margin-top: #{$mr}px;
+  }
+  .mr-b-#{$mr} {
+    margin-bottom: #{$mr}px;
+  }
+  .mr-l-#{$mr} {
+    margin-left: #{$mr}px;
+  }
+  .mr-r-#{$mr} {
+    margin-right: #{$mr}px;
+  }
+  .mr-v-#{$mr} {
+    @extend .mr-t-#{$mr};
+    @extend .mr-b-#{$mr};
+  }
+  .mr-h-#{$mr} {
+    @extend .mr-l-#{$mr};
+    @extend .mr-r-#{$mr};
+  }
 }
