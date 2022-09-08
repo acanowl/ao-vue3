@@ -1,6 +1,6 @@
 <template lang="pug">
 .todo-group
-  .txt-h2 {{ props.title }}
+  .txt-h3.txt-bold {{ props.title }}
   todo-item(:items="item" v-for="item in props.items" :key="item.id" v-bind="$attrs")
 </template>
   

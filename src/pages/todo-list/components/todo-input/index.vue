@@ -1,6 +1,6 @@
 <template lang="pug">
 .flex
-  el-input(v-model="inputValue" clearable @input="inputHandle")
+  el-input(v-model="inputValue" clearable @input="inputHandle" @keydown.enter="addTodoItem")
   el-button(@click='addTodoItem') {{ props.text }}
 </template>
   
