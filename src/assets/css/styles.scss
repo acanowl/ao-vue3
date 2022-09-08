@@ -89,3 +89,29 @@ $mrs: 8;
     @extend .mr-r-#{$mr};
   }
 }
+
+.pr, .relative {
+  position: relative;
+}
+
+.pa, .absolute {
+  position: absolute;
+}
+
+.border {
+  border: 1px solid #333;
+}
+
+.rounded-full {
+  border-radius: 50%;
+}
+
+.rounded-s {
+  border-radius: 4px;
+}
+.rounded-m {
+  border-radius: 8px;
+}
+.rounded-l {
+  border-radius: 16px;
+}

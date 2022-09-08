@@ -4,6 +4,3 @@ router-view
 
 <script setup>
 </script>
-
-<style>
-</style>

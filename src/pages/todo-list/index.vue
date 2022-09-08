@@ -1,7 +1,9 @@
 <template lang="pug">
 .txt-h1.txt-bold Todo List
-todo-input.pd-t-8(v-model="inputValue" @[EVENT_ADD_NAME]="addHandle")
-todo-group.pd-t-8(v-for="([key, title]) in todoGroupOpts" :key="key" :title="title" :items="todoGroupList[key]" @refresh="refreshHandle" @clear="clearHandle")
+.pd-t-8
+  todo-input(v-model="inputValue" @[EVENT_ADD_NAME]="addHandle")
+.pd-t-8(v-for="([key, title]) in todoGroupOpts" :key="key")
+  todo-group(:title="title" :items="todoGroupList[key]" @refresh="refreshHandle" @clear="clearHandle")
 </template>
 
 <script setup>

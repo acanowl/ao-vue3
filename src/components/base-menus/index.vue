@@ -1,5 +1,5 @@
 <template lang="pug">
-el-menu(:default-active="activeIndex" :mode="modeType" router @open="handleOpen" @close="handleClose")
+el-menu.full-h(:default-active="activeIndex" :mode="modeType" router @open="handleOpen" @close="handleClose")
   base-menu(:columns="columns" @click="handleClick")
 </template>
 
@@ -10,16 +10,14 @@ import BaseMenu from '../base-menu'
 
 const route = useRoute()
 const props = defineProps({
+  currentRoute: String,
   columns: Array,
-  mode: {
-    type: Boolean,
-    default: false
-  }
+  mode: { type: Boolean, default: false }
 })
 const [columnItem = {}] = props.columns
 const { path = route.path } = columnItem
-const activeIndex = ref(path)
-const modeType = computed(() => props.mode ? 'horizontal' : 'vertical' )
+const activeIndex = ref(props.currentRoute || path)
+const modeType = computed(() => props.mode ? 'horizontal' : 'vertical')
 
 const emit = defineEmits(['open', 'close', 'click'])
 // key, keyPath
